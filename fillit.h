@@ -6,7 +6,7 @@
 /*   By: slynn-ev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 11:30:10 by slynn-ev          #+#    #+#             */
-/*   Updated: 2018/01/04 14:35:49 by slynn-ev         ###   ########.fr       */
+/*   Updated: 2018/01/04 14:50:20 by slynn-ev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,29 +40,10 @@ struct			s_tetrimino
 };
 
 void			print_board(t_tetrimino *tets, int size, int map_count);
-void			adapt_coords_to_size(uint64_t n, t_tetrimino *tets);
 void			toggle_tet(const t_tetrimino *tets, uint16_t *map);
 int 			can_place(const t_tetrimino *tets, uint16_t *map);
-int				print_map(uint16_t *tab, int size);
-int				print_binary(uint64_t *tab, int map_count, int size);
-void			binary_printer(uint64_t tab, int size);
-//void			assign_tetrimino_index(t_tetrimino **tets, int size);
-//void			n_print_square(char *square, int size);
-void			free_tetriminos(t_tetrimino **tetriminos, int mc);
-//void			free_square(char **square, int size);
-//char			**build_square(int size);
-void			error_and_exit(void);
-void			build_tetrimino_library(int tets[19]);
-int				get_size(int map_count);
-int				check_format(char *buff);
+int				setup_solver(char *buff, int map_count);
 int				get_coordinates(char *buff,
 t_tetrimino *tets, int mc);
-int				check_for_match(int input_coordinates, int tlib_coordinates);
-int				assign_tetriminos(int map_count, t_tetrimino *tets,
-int	*coordinates, int *tlib);
-//int				put_tetrimino(t_tetrimino *tetrimino,
-//char *square, int pos);
-//void			remove_tetrimino(t_tetrimino *tetrimino,
-//char *square, int pos);
 
 #endif

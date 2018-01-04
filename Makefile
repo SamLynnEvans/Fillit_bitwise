@@ -6,17 +6,14 @@
 #    By: slynn-ev <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/14 11:12:50 by slynn-ev          #+#    #+#              #
-#    Updated: 2018/01/04 14:34:14 by slynn-ev         ###   ########.fr        #
+#    Updated: 2018/01/04 14:51:55 by slynn-ev         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC = check_for_match.c \
-check_format.c \
-error.c \
-get_coordinates.c \
-get_size.c \
+SRC = get_coordinates.c \
 main.c \
 print.c \
+solver.c \
 
 NAME = fillit
 LIB = libft

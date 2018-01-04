@@ -6,65 +6,41 @@
 /*   By: slynn-ev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 11:30:02 by slynn-ev          #+#    #+#             */
-/*   Updated: 2018/01/04 14:22:42 by slynn-ev         ###   ########.fr       */
+/*   Updated: 2018/01/04 14:49:29 by slynn-ev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include <stdio.h>
 
-inline int can_place(const t_tetrimino *tets, uint16_t *map)
+int	check_format(char *buff)
 {
-	return (!(*(uint64_t *)(map + tets->y) & (tets->coords >> tets->x)));
-}
+	int		i;
+	int		offset;
 
-inline void	toggle_tet(const t_tetrimino *tets, uint16_t *map)
-{
-	*(uint64_t *)(map + tets->y) ^= (tets->coords >> tets->x);
-}
-
-int	backtrack_filler(t_tetrimino *tets, int size, uint16_t *map)
-{	
-	tets->y = 0;
-	while (tets->y + tets->y_max < size)
+	offset = -1;
+	i = 0;
+	while (buff[i])
 	{
-		tets->x = 0;
-		while (tets->x + tets->x_max < size)
-		{
-			if (can_place(tets, map))
-			{
-				toggle_tet(tets, map);
-				if (tets->last_piece == 1)
-					return (1);
-				if (backtrack_filler(tets + 1, size, map))
-					return (1);
-				toggle_tet(tets, map);
-			}
-			tets->x++;
-		}
-		tets->y++;
+		if ((i + 1) % 21 == 0 && buff[i] != '\n')
+			return (-1);
+		else if ((i - offset) % 5 == 0 && buff[i] != '\n')
+			return (-1);
+		else if (buff[i] != '#' && buff[i] != '.' && (i + 1) % 21 != 0
+		&& (i - offset) % 5 != 0)
+			return (-1);
+		if ((i + 1) % 21 == 0)
+			offset++;
+		i++;
 	}
-	return (0);
-}
-
-int	setup_solver(char *buff, int map_count)
-{
-	uint16_t		map[16];
-	t_tetrimino		tets[map_count];
-	int				size;
-	
-	size = get_size(map_count);
-	if (!(get_coordinates(buff, tets, map_count)))
+	if ((i + 1) % 21 != 0)
 		return (-1);
-	ft_bzero(map, sizeof(uint16_t) * 16);
-	while ((backtrack_filler(tets, size, map)) == 0 && size < 17)
-	{
-		ft_bzero(map, sizeof(uint16_t) * 16);
-		size++;
-	}
-	//print_map(map, size);
-	print_board(tets, size, map_count);
-	return (size < 17) ? 1 : -1;
+	return (offset + 2);
+}
+
+void	error_and_exit(void)
+{
+	ft_putstr("error");
+	exit(EXIT_SUCCESS);
 }
 
 int	main(int ac, char **argv)

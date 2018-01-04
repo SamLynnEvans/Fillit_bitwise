@@ -6,22 +6,17 @@
 #    By: slynn-ev <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/14 11:12:50 by slynn-ev          #+#    #+#              #
-#    Updated: 2017/12/18 20:27:23 by slynn-ev         ###   ########.fr        #
+#    Updated: 2018/01/04 14:34:14 by slynn-ev         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC = adapt_coords_to_size.c \
-	assign_tetriminos.c \
-	build_tetrimino_library.c \
-	check_for_match.c \
-   	check_format.c \
-	error.c \
-	get_coordinates.c \
-	get_size.c \
-	main.c \
-	print_binary.c \
-	print_map.c \
-	print.c \
+SRC = check_for_match.c \
+check_format.c \
+error.c \
+get_coordinates.c \
+get_size.c \
+main.c \
+print.c \
 
 NAME = fillit
 LIB = libft

@@ -6,7 +6,7 @@
 /*   By: slynn-ev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 11:30:02 by slynn-ev          #+#    #+#             */
-/*   Updated: 2017/12/18 20:26:56 by slynn-ev         ###   ########.fr       */
+/*   Updated: 2018/01/04 14:22:42 by slynn-ev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	setup_solver(char *buff, int map_count)
 		ft_bzero(map, sizeof(uint16_t) * 16);
 		size++;
 	}
-	print_map(map, size);
+	//print_map(map, size);
 	print_board(tets, size, map_count);
 	return (size < 17) ? 1 : -1;
 }

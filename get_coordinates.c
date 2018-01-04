@@ -6,14 +6,14 @@
 /*   By: slynn-ev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 11:29:32 by slynn-ev          #+#    #+#             */
-/*   Updated: 2017/12/18 17:48:21 by slynn-ev         ###   ########.fr       */
+/*   Updated: 2018/01/04 15:26:20 by slynn-ev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include <stdio.h>
 
-int	get_points(int *start, t_tetrimino *tets, char *buff)
+int	get_points(int *pos, t_tetrimino *tets, char *buff)
 {
 	int	i;
 	int	count;
@@ -33,22 +33,46 @@ int	get_points(int *start, t_tetrimino *tets, char *buff)
 		tets->x_max = (tets->x_max < coords[i] % 5) ? coords[i] % 5 : tets->x_max;
 		x_min = (x_min > coords[i] % 5) ? coords[i] % 5 : x_min; 
 	}
-	tets->print_offset = (coords[0] % 5 - x_min);
-	*start = coords[0] - (coords[0] % 5 - x_min);
+	*pos = coords[0] - (coords[0] % 5 - x_min);
 	tets->x_max = tets->x_max - x_min;
 	tets->y_max = ((coords[3] + 1) / 5) - ((coords[0] + 1) / 5);
 	return ((count == 4) ? 1: 0);
 }
 
+int	check_points(char *buff)
+{
+	int	i;
+	int	count;
+
+	i = 0;
+	count = 0;
+	while (i < 20)
+	{
+		if (buff[i] == '#')
+		{
+			if (i >= 5 && buff[i - 5] == '#')
+			   count++;	
+			if (i < 15 && buff[i + 5] == '#')
+			   count++;	
+			if (i > 0 && buff[i - 1] == '#')
+			   count++;	
+			if (buff[i + 1] == '#')
+			   count++;	
+		}
+		i++;
+	}
+	return (count >= 6 && count <= 8) ? 1 : 0;
+}
+
 int assign_coords(t_tetrimino *tets, char *buff)
 {
-	int	pos;
-	int	x;
-	int	y;
+	int			pos;
+	int			x;
+	int			y;
 	uint64_t	num;
 
-	if (!(get_points(&pos, tets, buff)))
-		return (-1);
+	if (!(check_points(buff)) || !(get_points(&pos, tets, buff)))
+		return (0);
 	y = tets->y_max;
 	while (y >= 0)
 	{
@@ -74,7 +98,8 @@ int	get_coordinates(char *buff, t_tetrimino *tets, int map_count)
 	j = 0;
 	while (j < map_count)
 	{
-		assign_coords(&tets[j], buff);	
+		if	(!(assign_coords(&tets[j], buff)))
+			return (0);	
 		tets[j].order = j;
 		ft_memmove(buff, &buff[21], ft_strlen(buff) + 1);
 		tets[j].last_piece = (j + 1 == map_count) ? 1 : 0;

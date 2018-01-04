@@ -6,7 +6,7 @@
 /*   By: slynn-ev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 11:30:02 by slynn-ev          #+#    #+#             */
-/*   Updated: 2018/01/04 14:49:29 by slynn-ev         ###   ########.fr       */
+/*   Updated: 2018/01/04 15:23:34 by slynn-ev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	check_format(char *buff)
 
 void	error_and_exit(void)
 {
-	ft_putstr("error");
+	ft_putstr("error\n");
 	exit(EXIT_SUCCESS);
 }
 

@@ -6,7 +6,7 @@
 /*   By: slynn-ev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 11:30:10 by slynn-ev          #+#    #+#             */
-/*   Updated: 2018/01/04 14:50:20 by slynn-ev         ###   ########.fr       */
+/*   Updated: 2018/01/04 15:02:01 by slynn-ev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ struct			s_tetrimino
 	unsigned char		x_max;
 	unsigned char		y_max;
 	unsigned char		order;
-	unsigned char		print_offset;
 };
 
 void			print_board(t_tetrimino *tets, int size, int map_count);

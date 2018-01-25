@@ -14,7 +14,7 @@
 # define FILLIT_H
 
 # include <fcntl.h>
-# include "../libft/libft.h"
+# include "libft.h"
 # include <stdio.h>
 # define BUFF_SIZE 1000
 #define WHT   "\x1B[37m"

@@ -1,8 +1,9 @@
 SRC = ft_atoi.c \
-ft_power.c \
 ft_bzero.c \
+ft_lstnew_ptr.c \
 ft_intdebug.c \
 ft_isalnum.c \
+ft_strjoin_free.c \
 ft_isalpha.c \
 ft_isascii.c \
 ft_isdigit.c \
@@ -62,16 +63,27 @@ ft_strsub.c \
 ft_strtrim.c \
 ft_tolower.c \
 ft_toupper.c \
+ft_unicode_putchar.c \
+ft_numlen.c \
+ft_putstrn.c \
 
 OBJ = $(SRC:.c=.o)
 
+CPPFLAGS = -I../../Includes
+
+DEPS = -../../Includes/libft.h
+
 NAME = libft.a
+
+FLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	gcc -c -Wall -Wextra -Werror $(SRC) -Ilibft.h
-	ar rc $(NAME) $(OBJ)
+	ar rc $@ $^
+
+%o : %.c $(DEPS)
+	gcc $(FLAGS) -c $< $(CPPFLAGS)
 
 clean:
 	rm -f $(OBJ)
@@ -79,4 +91,6 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 
-re: fclean all
+re: 
+	$(MAKE) fclean
+	$(MAKE) all

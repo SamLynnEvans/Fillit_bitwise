@@ -1,27 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_lsttstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: slynn-ev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/05 11:14:43 by slynn-ev          #+#    #+#             */
-/*   Updated: 2017/12/15 15:31:09 by slynn-ev         ###   ########.fr       */
+/*   Created: 2017/12/06 16:59:23 by slynn-ev          #+#    #+#             */
+/*   Updated: 2017/12/15 14:56:52 by slynn-ev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strcpy(char *dst, const char *src)
+char	*ft_lsttstr_del(t_list **list)
 {
-	int	i;
+	t_list	*tmp;
+	int		count;
+	char	*dst;
 
-	i = 0;
-	while (src[i])
+	count = 0;
+	tmp = *list;
+	while (tmp != NULL)
 	{
-		dst[i] = src[i];
-		i++;
+		count += tmp->content_size;
+		tmp = tmp->next;
 	}
-	dst[i] = '\0';
+	if (!(dst = (char *)ft_memalloc(count + 1)))
+		return (NULL);
+	while (*list != NULL)
+	{
+		tmp = *list;
+		ft_strcat(dst, tmp->content);
+		free(tmp->content);
+		*list = (*list)->next;
+		free(tmp);
+	}
+	dst[count] = '\0';
 	return (dst);
 }

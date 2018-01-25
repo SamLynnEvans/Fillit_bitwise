@@ -1,28 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memalloc.c                                      :+:      :+:    :+:   */
+/*   ft_strjoin_free.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: slynn-ev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/05 10:39:06 by slynn-ev          #+#    #+#             */
-/*   Updated: 2017/12/05 15:15:38 by slynn-ev         ###   ########.fr       */
+/*   Created: 2017/12/15 11:17:30 by slynn-ev          #+#    #+#             */
+/*   Updated: 2018/01/22 14:14:10 by slynn-ev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memalloc(size_t size)
+char	*ft_strjoin_free(char const *s1, char const *s2)
 {
-	void *p;
+	int			len;
+	char		*dst;
+	char		*tmp;
+	int			i;
 
-	if (size == 0)
+	i = 0;
+	if (s2 == NULL)
+		return (NULL);
+	if (s1 == NULL)
+		return (ft_strdup(s2));
+	if (!(len = ft_strlen((char *)s1) + ft_strlen((char *)s2)))
+		return (NULL);
+	if ((dst = (char *)malloc(sizeof(char) * (len + 1))))
 	{
-		p = (char *)malloc(0);
-		return (NULL);
+		tmp = (char *)s1;
+		while (*s1)
+			dst[i++] = *s1++;
+		while (*s2)
+			dst[i++] = *s2++;
+		dst[i] = '\0';
+		free((void *)tmp);
+		return (dst);
 	}
-	else if (!(p = (char *)malloc(sizeof(char) * size)))
-		return (NULL);
-	ft_bzero(p, size);
-	return (p);
+	return (NULL);
 }

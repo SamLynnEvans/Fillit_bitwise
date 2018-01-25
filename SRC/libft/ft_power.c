@@ -6,13 +6,13 @@
 /*   By: slynn-ev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 16:22:02 by slynn-ev          #+#    #+#             */
-/*   Updated: 2017/12/17 11:22:55 by slynn-ev         ###   ########.fr       */
+/*   Updated: 2018/01/18 20:57:42 by slynn-ev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_power(int num, int power)
+int	ft_power(int num, int power)
 {
 	int n;
 	int	i;
@@ -24,7 +24,7 @@ int ft_power(int num, int power)
 	while (i < power)
 	{
 		n = n * num;
-		i++;		
+		i++;
 	}
 	return (n);
 }

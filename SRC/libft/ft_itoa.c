@@ -6,7 +6,7 @@
 /*   By: slynn-ev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 10:17:44 by slynn-ev          #+#    #+#             */
-/*   Updated: 2017/12/05 15:13:15 by slynn-ev         ###   ########.fr       */
+/*   Updated: 2017/12/15 14:56:58 by slynn-ev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,8 @@ char		*ft_itoa(int n)
 
 	if (n == 0)
 	{
-		s = (char *)malloc(sizeof(char) * 2);
+		if (!(s = (char *)malloc(sizeof(char) * 2)))
+			return (NULL);
 		s[0] = '0';
 		s[1] = '\0';
 		return (s);

@@ -10,35 +10,55 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRC = get_coordinates.c \
+SRC_NAME = get_coordinates.c \
 main.c \
 print.c \
 solver.c \
 
+OBJ_NAME = $(SRC_NAME:.c=.o)
+
+DEPS = Includes/libft.h \
+Includes/fillit.h \
+
+CPPFLAGS = -IIncludes
+
+SRC_PATH = SRC
+
 NAME = fillit
-LIB = libft
+
+LIB = SRC/libft
+
 LIB_A = libft.a
+
 FLAG = -Wall -Werror -Wextra
-OBJ = $(SRC:.c=.o)
+
+OBJ = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
+
+OBJ = $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
+
+OBJ_PATH = obj
 
 all: library $(NAME)
 
 $(NAME): $(OBJ) $(LIB)
-	make -C $(LIB)
 	gcc $(OBJ) $(LIB)/$(LIB_A) -o $(NAME) -Ifillit.h
 
 library:
-	make -C libft
-%.o: %.c
-	gcc -c $(FLAG) $<
+	make -C SRC/libft
+
+$(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(DEPS)
+	@mkdir -p $(OBJ_PATH)
+	gcc $(FLAG) -o $@ -c $< $(CPPFLAGS)
 
 clean:
 	make clean -C $(LIB)
-	rm -f $(OBJ)
+	rm -rf $(OBJ_PATH)
 
 fclean: clean
 	rm -f $(NAME) $(LIB)/$(LIB_A)
 
-re: fclean all
+re: 
+	$(MAKE) fclean 
+	$(MAKE) all
 
 .PHONY: all clean fclean re

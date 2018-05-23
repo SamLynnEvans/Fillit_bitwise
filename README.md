@@ -28,7 +28,7 @@ the map_file is a simple text file and should contain tetriminos formatted as in
 ....<br/>
 ....<br/>
 <br/>
-This map would result in the following output<br/><br/>
+This map would result in the following output:<br/><br/>
 <img src="https://github.com/SamLynnEvans/Fillit_bitwise/blob/master/output_example.png"/>
 
 More maps can be seen <a href="https://github.com/miniponps/42-Fillit/tree/master/map">here</a>.
@@ -48,11 +48,11 @@ Or the same number shown more intutitively:
 0100000000000000<br/>
 0000000000000000<br/>
 
-A map is then created which consists of an array of 16 * 16-bit integers, where all values are set to 0. The beauty of this method is then that we can simply then move our piece along the map using bit shift operators, and check if in each spot we can place a piece by doing a simple '&' operation between the piece and the map (cast as a uint64_t). 
+A map is then created which consists of an array of 16 * 16-bit integers, where all values are set to 0. The beauty of this method is that we can then simply move our piece along the map using bit shift operators, and check if in each spot we can place a piece by doing a simple '&' operation between the piece and the map (cast as a uint64_t). 
 
-If the '&' operation results in a number over 0, it means there are 1s on the map (i.e. bits of tetriminos) where our piece has 1s too, so we can't put. Conversely if it yields 0, there is no overlapping, so the piece can be put.
+If the '&' operation results in a number over 0, it means there are 1s on the map (i.e. bits of other placed tetriminos) where our piece has 1s too, so we can't put it. Conversely if it yields 0, there is no overlapping, so the piece can be put.
 
-The most satisfying part of this algorithm then comes in adding a piece to the map through a single '^=' operation between the map and the piece (unlike before when using char arrays and having to update every coordinate individually...). This same function can also be used to remove a piece.
+The most satisfying part of this algorithm then comes in adding a piece to the map through a single '^=' operation between the map and the piece (unlike before when I used char arrays and had to update every coordinate individually...). This same function can also be used to remove a piece.
 
 <b>Learnings</b>
 
@@ -60,4 +60,4 @@ The most satisfying part of this algorithm then comes in adding a piece to the m
 
 2. Reinforcement of ability to implement recursive back-tracking algorithms.
 
-3. Deeper understanding of how arrays are stored in the memory and how they can be accessed. One of the biggest conceptual challenges of the project was to deal with changing sizes for the square (ranging from 2 * 2 to 16 * 16). This was achieved by using 16 integers as an array, each representing one row. When seeing if I could fit a piece, casting an integer from the map as a uint64_t would mean the piece was compared beyond only that integer, and would read 64 bits into the array, covering the the next 3 integers (and thus rows). 
+3. I gained a deeper understanding of how arrays are stored in the memory and how they can be accessed. One of the biggest conceptual challenges of the project was to deal with changing sizes for the square (ranging from 2 * 2 to 16 * 16). This was achieved by using 16 integers as an array, each representing one row. When seeing if I could fit a piece, casting an integer from the map as a uint64_t would mean the piece was compared beyond only that integer, and would read 64 bits into the array, and compare against the the next 3 integers (and thus rows) too. 

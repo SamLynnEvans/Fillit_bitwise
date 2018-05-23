@@ -28,7 +28,7 @@ the map_file is a simple text file and should contain tetriminos formatted as in
 ....<br/>
 ....<br/>
 <br/>
-Output<br/><br/>
+This map would result in the following output<br/><br/>
 <img src="https://github.com/SamLynnEvans/Fillit_bitwise/blob/master/output_example.png"/>
 
 More maps can be seen <a href="https://github.com/miniponps/42-Fillit/tree/master/map">here</a>.

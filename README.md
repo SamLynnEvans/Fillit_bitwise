@@ -28,10 +28,10 @@ the map_file is a simple text fie and should contain tetriminos formatted as in 
 ....<br/>
 ....<br/>
 <br/>
-Output
-<a href="https://github.com/SamLynnEvans/Fillit_bitwise/blob/master/output_example.png"></a>
+Output<br/><br/>
+<img src="https://github.com/SamLynnEvans/Fillit_bitwise/blob/master/output_example.png"/>
 
-More maps can be seen here.
+More maps can be seen <a href="https://github.com/miniponps/42-Fillit/tree/master/map">here</a>.
 
 <b>The algorithm</b>
 
@@ -43,10 +43,10 @@ Each tetrimino is stored as an 64 bit number, where a binary depiction may look 
 
 Or the same number shown more intutitively:
 
-1000000000000000                   (this number would correspond to the first tetrimino in the map above)
-1100000000000000
-0100000000000000
-0000000000000000
+1000000000000000<br/>
+1100000000000000<br/>
+0100000000000000<br/>
+0000000000000000<br/>
 
 A map is then created which consists of an array of 16 * 16-bit integers, where all values are set to 0. The beauty of this method is then that we can simply then move our piece along the map using bit shift operators, and check if in each spot we can place a piece by doing a simple '&' operation between the piece and the map (cast as a uint_64). 
 

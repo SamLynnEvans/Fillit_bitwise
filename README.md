@@ -35,7 +35,7 @@ More maps can be seen <a href="https://github.com/miniponps/42-Fillit/tree/maste
 
 <b>The algorithm</b>
 
-Fillit uses a recursive back-tracking algorithm to try putting each piece in each possible square starting from the top-left corner. I first learnt about this technique attempting the n queens problem during the entry exam for my school (Ecole 42), and later in fact wrote a <a href=https://github.com/SamLynnEvans/nqueens_bitwise">much more elegant solution</a> to this same problem using bit manipulation.
+Fillit uses a recursive back-tracking algorithm to try putting each piece in each possible square starting from the top-left corner. I first learnt about this technique attempting the n queens problem during the entry exam for my school (Ecole 42), and later in fact wrote a <a href="https://github.com/SamLynnEvans/nqueens_bitwise">much more elegant solution</a> to this same problem using bit manipulation.
 
 Each tetrimino is stored as an 64 bit number, where a binary depiction of the first element in the map above would look like this:
 

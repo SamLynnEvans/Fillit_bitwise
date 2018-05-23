@@ -52,7 +52,7 @@ A map is then created which consists of an array of 16 * 16-bit integers, where 
 
 If the '&' operation results in a number over 0, it means there are 1s on the map (i.e. bits of tetriminos) where our piece has 1s too, so we can't put. Conversely if it yields 0, there is no overlapping, so the piece can be put.
 
-The most satisfying part of this algorithm then comes in adding a piece to the map through a single '|=' operation between the map and the piece (unlike before when using char arrays and having to update every coordinate individually...). This same function can also be used to remove a piece.
+The most satisfying part of this algorithm then comes in adding a piece to the map through a single '^=' operation between the map and the piece (unlike before when using char arrays and having to update every coordinate individually...). This same function can also be used to remove a piece.
 
 <b>Learnings</b>
 

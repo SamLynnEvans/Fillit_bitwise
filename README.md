@@ -13,22 +13,23 @@ I had never used bit operators before, so this project was a wonderful entry int
 
 the map_file is a simple text fie and should contain tetriminos formatted as in this example:
 
-.#..
-.##.
-..#.
-....
-
-....
-.#..
-.#..
-.##.
-
-.##.
-.##.
-....
-....
-
+.#..<br/>
+.##.<br/>
+..#.<br/>
+....<br/>
+<br/>
+....<br/>
+.#..<br/>
+.#..<br/>
+.##.<br/>
+<br/>
+.##.<br/>
+.##.<br/>
+....<br/>
+....<br/>
+<br/>
 Output
+<a href="https://github.com/SamLynnEvans/Fillit_bitwise/blob/master/output_example.png"></a>
 
 More maps can be seen here.
 
